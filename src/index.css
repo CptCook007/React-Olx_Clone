@@ -12,3 +12,18 @@
 .font-roboto {
   font-family: "Roboto", sans-serif;
 }
+@keyframes shimmer {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(90deg, #aaa 25%, #bbb 50%, #aaa 75%);
+  transform: translateZ(0);
+  background-size: 200% 100%;
+}

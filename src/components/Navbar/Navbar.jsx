@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import CategoryNav from "./CategoryNav";
+import CategoryNav from "../home/CategoryNav";
 import { NavbarLocationSelector } from "./NavbarLocationSelector";
 import { FaMagnifyingGlass, FaPlus } from "react-icons/fa6";
-import { LoginModal } from "./LoginModal";
+import { LoginModal } from "../Login/LoginModal";
 import { UserContext } from "../../App";
 import { Link } from "react-router-dom";
 function Navbar() {

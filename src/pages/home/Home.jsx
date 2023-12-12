@@ -1,9 +1,9 @@
 import axios from "axios";
-import Navbar from "../../components/home/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 // import { data } from "../../productData";
 import { db } from "../../firebase-config";
 import { ProductCard } from "../../components/home/ProductCard";
-import Footer from "../../components/home/Footer";
+import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import { collection, getDocs, limit, query } from "firebase/firestore";
 function Home() {

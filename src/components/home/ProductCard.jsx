@@ -1,6 +1,10 @@
 import { GoHeart } from "react-icons/go";
 import { FaBolt } from "react-icons/fa6";
+import Skeleton from "react-loading-skeleton";
+import { useState } from "react";
+
 export function ProductCard({ product }) {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   return (
     <>
       <div className="hover:cursor-pointer relative flex-col  rounded border inline-flex justify-center align-top  border-gray-300 shadow-lg">
@@ -14,12 +18,25 @@ export function ProductCard({ product }) {
               FEATURED
             </div>
           )}
+          {!isImageLoaded ? (
+            <div className="w-[100%] px-4 pt-3 h-full animate-shimmer"></div>
+          ) : null}
           <img
-            className="object-contain px-4 pt-3"
-            width={"100%"}
-            height={"0px"}
+            className={`object-contain px-4 pt-3 ${
+              isImageLoaded ? "" : "hidden"
+            }`}
+            width="100%"
+            height="0px"
+            onLoad={() => {
+              console.log("Image loaded");
+              setIsImageLoaded(true);
+            }}
             src={product.image}
-          ></img>
+            onError={(error) => {
+              console.error("Image failed to load:", error);
+              setIsImageLoaded(true);
+            }}
+          />
         </div>
         <div className="relative">
           <div
