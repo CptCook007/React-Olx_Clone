@@ -3,8 +3,10 @@ import CategoryNav from "../home/CategoryNav";
 import { NavbarLocationSelector } from "./NavbarLocationSelector";
 import { FaMagnifyingGlass, FaPlus } from "react-icons/fa6";
 import { LoginModal } from "../Login/LoginModal";
-import { UserContext } from "../../App";
+import { UserContext } from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../firebase-config";
 function Navbar() {
   const { user, setUser } = useContext(UserContext);
   const [modal, setModal] = useState(false);
@@ -13,6 +15,7 @@ function Navbar() {
       setModal(true);
     }
   }
+  const { handleSignOutButton } = useContext(UserContext);
   return (
     <>
       <nav className="bg-[rgb(239,240,243)] p-2.5 fixed z-10  top-0 left-0 w-full lg:ps-32 flex gap-100">
@@ -44,14 +47,7 @@ function Navbar() {
         </div>
         <div className="flex underline decoration-black hover:no-underline decoration-[2px] text-lg text-center font-bold ms-28 underline-offset-4 items-center -mt-1">
           {user ? (
-            <button
-              onClick={() => {
-                setUser(null);
-                localStorage.removeItem("username");
-              }}
-            >
-              Logout
-            </button>
+            <button onClick={handleSignOutButton}>Logout</button>
           ) : (
             <button
               onClick={() => {

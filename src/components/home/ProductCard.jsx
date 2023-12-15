@@ -28,7 +28,6 @@ export function ProductCard({ product }) {
             width="100%"
             height="0px"
             onLoad={() => {
-              console.log("Image loaded");
               setIsImageLoaded(true);
             }}
             src={product.image}

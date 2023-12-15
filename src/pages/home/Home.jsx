@@ -35,7 +35,6 @@ function Home() {
 
     fetchData();
   }, [limitCount]);
-  console.log(products);
   return (
     <div className="relative">
       <Navbar />

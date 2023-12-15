@@ -1,18 +1,11 @@
 import { FiSmartphone, FiX } from "react-icons/fi";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { useContext } from "react";
-import { UserContext } from "../../App";
+import { UserContext } from "../../contexts/UserContext";
 import { auth, provider } from "../../firebase-config";
 import { signInWithPopup } from "firebase/auth";
 export function LoginModal({ setModal }) {
-  const { user, setUser } = useContext(UserContext);
-  function handleGoogleAuthClick() {
-    signInWithPopup(auth, provider).then((data) => {
-      setUser(data.user.displayName);
-      localStorage.setItem("username", data.user.displayName);
-    });
-    setModal(false);
-  }
+  const { user, setUser, handleGoogleAuthClick } = useContext(UserContext);
   return (
     <>
       <div className="fixed inset-0 flex justify-center items-center ins z-40 w-full h-full bg-black/80">
@@ -37,7 +30,10 @@ export function LoginModal({ setModal }) {
           </div>
           <div className="w-full flex justify-center">
             <button
-              onClick={handleGoogleAuthClick}
+              onClick={() => {
+                handleGoogleAuthClick();
+                setModal(false);
+              }}
               className="border-2 mt-10 flex text-[#002f34] font-roboto items-center border-[#002f34] rounded h-14 w-[92%] text-left ps-4 font-semibold text-lg"
             >
               <span className=" pe-5">
