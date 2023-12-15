@@ -9,9 +9,17 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/React-Olx_Clone
+/"
+          element={<Home />}
+        />
         {user ? (
-          <Route path="/user/add-product" element={<AddProduct />} />
+          <Route
+            path="/React-Olx_Clone
+          /user/add-product"
+            element={<AddProduct />}
+          />
         ) : (
           <Route
             path="/user/add-product"
